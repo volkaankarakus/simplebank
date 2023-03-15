@@ -7,7 +7,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createEntry = `-- name: CreateEntry :one
@@ -20,8 +19,8 @@ INSERT INTO entries(
 `
 
 type CreateEntryParams struct {
-	AccountID sql.NullInt64 `json:"accountID"`
-	Amount    int64         `json:"amount"`
+	AccountID int64
+	Amount    int64
 }
 
 func (q *Queries) CreateEntry(ctx context.Context, arg CreateEntryParams) (Entry, error) {
@@ -72,8 +71,8 @@ OFFSET $2
 `
 
 type ListEntriesParams struct {
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
+	Limit  int32
+	Offset int32
 }
 
 func (q *Queries) ListEntries(ctx context.Context, arg ListEntriesParams) ([]Entry, error) {
@@ -112,8 +111,8 @@ RETURNING id, account_id, amount, created_at
 `
 
 type UpdateEntryParams struct {
-	ID     int64 `json:"id"`
-	Amount int64 `json:"amount"`
+	ID     int64
+	Amount int64
 }
 
 func (q *Queries) UpdateEntry(ctx context.Context, arg UpdateEntryParams) (Entry, error) {

@@ -56,7 +56,7 @@ func TestGetAccountForEntry(t *testing.T) {
 func createRandomEntry(t *testing.T) Entry {
 	account1 := createRandomAccountForEntry(t)
 	arg := CreateEntryParams{
-		AccountID: sql.NullInt64{account1.ID, true},
+		AccountID: account1.ID,
 		Amount:    util.RandomAmount(),
 	}
 

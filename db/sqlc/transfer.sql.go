@@ -20,9 +20,9 @@ INSERT INTO transfers (
 `
 
 type CreateTransferParams struct {
-	FromAccountID int64 `json:"fromAccountID"`
-	ToAccountID   int64 `json:"toAccountID"`
-	Amount        int64 `json:"amount"`
+	FromAccountID int64
+	ToAccountID   int64
+	Amount        int64
 }
 
 func (q *Queries) CreateTransfer(ctx context.Context, arg CreateTransferParams) (Transfer, error) {
@@ -75,8 +75,8 @@ OFFSET $2
 `
 
 type ListTransfersParams struct {
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
+	Limit  int32
+	Offset int32
 }
 
 func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([]Transfer, error) {
@@ -116,8 +116,8 @@ RETURNING id, from_account_id, to_account_id, amount, created_at
 `
 
 type UpdateTransferParams struct {
-	ID     int64 `json:"id"`
-	Amount int64 `json:"amount"`
+	ID     int64
+	Amount int64
 }
 
 func (q *Queries) UpdateTransfer(ctx context.Context, arg UpdateTransferParams) (Transfer, error) {
