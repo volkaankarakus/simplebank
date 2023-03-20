@@ -122,8 +122,6 @@ func TestTransferTx(t *testing.T) {
 	require.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }
 
-
-
 func TestTransferTwoTransactionDeadlockTx(t *testing.T) {
 	store := NewStore(testDB)
 
@@ -140,7 +138,7 @@ func TestTransferTwoTransactionDeadlockTx(t *testing.T) {
 		toAccountID := account2.ID
 
 		if i%2 == 1 {
-			  = account2.ID
+			fromAccountID = account2.ID
 			toAccountID = account1.ID
 		}
 
