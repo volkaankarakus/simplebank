@@ -44,8 +44,8 @@ jobs:
 
       - name: Install golang-migrate
         run: |
-          apt-get update
-          apt-get install -y migrate
+          sudo apt-get update
+          sudo apt-get install -y migrate
 
       - name: Run migrations
         run: make migrateup
